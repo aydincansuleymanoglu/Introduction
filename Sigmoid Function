@@ -2,19 +2,42 @@ import numpy as np
 x=np.array=[1, 2, 3, 4, 5]
 
 #Definition of sigmoid function
-def sigmoid(x)
-s=1/(1+np.exp(-x)
-return s
+def sigmoid(x):
+  s=1/(1+np.exp(-x)
+  return s
 
 sigmoid(X)
 
 #Definition of sigmoid gradient
-def sigmoid_derivative(x)
-s=sigmoid(x)
-ds=s*(1-s)
-return ds
+def sigmoid_derivative(x):
+  s=sigmoid(x)
+  ds=s*(1-s)
+  return ds
 
 #Definition of image to vector converter function .It takes an input of shape (length, height, 3) and returns a vector of shape (length*height*3, 1).
 def image2vector(image):
-v = image.reshape((image.shape[0]*image.shape[1]*image.shape[2], 1))
-return v
+  v = image.reshape((image.shape[0]*image.shape[1]*image.shape[2], 1))
+  return v
+
+#Definition of normalization of rows
+def normalizeRows(x):
+  x_norm = np.linalg.norm(x,axis=1,keepdims=True)
+  x = x/x_norm
+  return x
+  
+#Loss function examples using vectorization
+def L1(yhat, y):
+  loss = sum(abs(y-yhat))
+  return loss
+  
+yhat = np.array([.7, 0.3, 0.2, .5, .8])
+y = np.array([1, 0, 0, 1, 1])
+print("L1 = " + str(L1(yhat,y)))
+
+def L2(yhat, y):
+  loss = np.dot(abs(y-yhat),abs(y-yhat))
+  return loss
+  
+yhat = np.array([.9, 0.2, 0.1, .4, .9])
+y = np.array([1, 0, 0, 1, 1])
+print("L2 = " + str(L2(yhat,y)))
