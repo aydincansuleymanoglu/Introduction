@@ -1,0 +1,20 @@
+import numpy as np
+x=np.array=[1, 2, 3, 4, 5]
+
+#Definition of sigmoid function
+def sigmoid(x)
+s=1/(1+np.exp(-x)
+return s
+
+sigmoid(X)
+
+#Definition of sigmoid gradient
+def sigmoid_derivative(x)
+s=sigmoid(x)
+ds=s*(1-s)
+return ds
+
+#Definition of image to vector converter function .It takes an input of shape (length, height, 3) and returns a vector of shape (length*height*3, 1).
+def image2vector(image):
+v = image.reshape((image.shape[0]*image.shape[1]*image.shape[2], 1))
+return v
